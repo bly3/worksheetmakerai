@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube to Worksheet Converter</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Your existing CSS */
         :root {
             --primary: #6d5dfc;
             --primary-hover: #8677ff;
@@ -98,7 +95,6 @@
         .user-info {
             display: flex;
             align-items: center;
-            cursor: pointer;
         }
         
         .user-avatar {
@@ -487,6 +483,8 @@
             }
         }
     </style>
+    <!-- Add a simple icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -557,7 +555,13 @@
                         
                         <div class="url-list">
                             <h3>Added Videos</h3>
-                            <!-- Dynamic content will be added here by JavaScript -->
+                            <div class="url-item">
+                                <div>
+                                    <strong>Video Title Example</strong>
+                                    <div style="color: var(--text-dim);">https://www.youtube.com/watch?v=example</div>
+                                </div>
+                                <button>Remove</button>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -658,8 +662,7 @@
                 </div>
                 
                 <div class="worksheet-grid">
-                    <!-- Worksheet Cards will be loaded dynamically -->
-                    <!-- Sample card for reference -->
+                    <!-- Worksheet Card 1 -->
                     <div class="worksheet-card">
                         <div class="worksheet-preview">
                             <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
@@ -678,14 +681,97 @@
                             <button><i class="fas fa-edit"></i> Edit</button>
                         </div>
                     </div>
+                    
+                    <!-- Worksheet Card 2 -->
+                    <div class="worksheet-card">
+                        <div class="worksheet-preview">
+                            <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="worksheet-info">
+                            <h3 class="worksheet-title">World War II Overview</h3>
+                            <div class="worksheet-meta">
+                                <div>Created: Mar 8, 2025</div>
+                                <div>Type: Fill in the Blanks</div>
+                                <div>Questions: 20</div>
+                            </div>
+                        </div>
+                        <div class="worksheet-actions">
+                            <button><i class="fas fa-eye"></i> View</button>
+                            <button><i class="fas fa-download"></i> Download</button>
+                            <button><i class="fas fa-edit"></i> Edit</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worksheet Card 3 -->
+                    <div class="worksheet-card">
+                        <div class="worksheet-preview">
+                            <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="worksheet-info">
+                            <h3 class="worksheet-title">Basic Algebra Concepts</h3>
+                            <div class="worksheet-meta">
+                                <div>Created: Mar 5, 2025</div>
+                                <div>Type: Mixed</div>
+                                <div>Questions: 12</div>
+                            </div>
+                        </div>
+                        <div class="worksheet-actions">
+                            <button><i class="fas fa-eye"></i> View</button>
+                            <button><i class="fas fa-download"></i> Download</button>
+                            <button><i class="fas fa-edit"></i> Edit</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worksheet Card 4 -->
+                    <div class="worksheet-card">
+                        <div class="worksheet-preview">
+                            <i class="fas fa-file-alt" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="worksheet-info">
+                            <h3 class="worksheet-title">Cell Biology Fundamentals</h3>
+                            <div class="worksheet-meta">
+                                <div>Created: Mar 1, 2025</div>
+                                <div>Type: Short Answer</div>
+                                <div>Questions: 8</div>
+                            </div>
+                        </div>
+                        <div class="worksheet-actions">
+                            <button><i class="fas fa-eye"></i> View</button>
+                            <button><i class="fas fa-download"></i> Download</button>
+                            <button><i class="fas fa-edit"></i> Edit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Scripts -->
-    <script src="/api/static/js/authService.js"></script>
-    <script src="/api/static/js/worksheetService.js"></script>
-    <script src="/api/static/js/mainPage.js"></script>
+    <script>
+        // Simple Page Navigation
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Update active menu item
+                document.querySelectorAll('.menu-item').forEach(menuItem => {
+                    menuItem.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Update page content
+                const page = this.getAttribute('data-page');
+                if (page) {
+                    document.querySelectorAll('.content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(page + '-page')?.classList.add('active');
+                    
+                    // Update header title
+                    const pageTitle = document.querySelector('.page-title');
+                    if (pageTitle) {
+                        pageTitle.textContent = page === 'converter' ? 'Create New Worksheet' : 'My Worksheets';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
