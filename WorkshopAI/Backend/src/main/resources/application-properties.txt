@@ -1,0 +1,28 @@
+# Server configuration
+server.port=8080
+server.servlet.context-path=/api
+
+# Database configuration (H2 for development, can change to MySQL/PostgreSQL later)
+spring.datasource.url=jdbc:h2:file:./workshopai_db
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# JPA/Hibernate properties
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Security configuration
+app.jwt.secret=Tz9q0YgzAb5d7PRv3xlw8MFj2HKELnDsOWpXJeC1BUIGySuhimfVZQcoNtk4r6
+app.jwt.expiration=86400000
+
+# Static resources
+spring.mvc.static-path-pattern=/static/**
+spring.web.resources.static-locations=classpath:/static/
+
+# CORS configuration
+app.cors.allowed-origins=http://localhost:8080
