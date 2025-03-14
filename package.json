@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "express-list-routes": "^1.2.4"
+  }
+}
