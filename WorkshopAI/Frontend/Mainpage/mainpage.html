@@ -485,6 +485,8 @@
     </style>
     <!-- Add a simple icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add the mainPage.js script -->
+    <script src="mainPage.js"></script>
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -547,7 +549,7 @@
                         
                         <div class="form-group">
                             <label for="youtube-url">YouTube Video URL</label>
-                            <div style="display: flex;">
+                            <div style="display: flex;" id="youtube-form">
                                 <input type="url" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..." style="flex: 1; margin-right: 10px;">
                                 <button class="btn" id="add-url">Add</button>
                             </div>
